@@ -17,6 +17,9 @@ function fetchJoke() {
       data.jokes.forEach((index) => {
         jokesArray.push(index.joke)
       })
+    document.querySelector(//2
+        '.joke',
+      ).innerHTML = `<strong>${jokesArray[0]}</strong>`
     })
     .catch((err) => {
       console.log(err)
