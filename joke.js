@@ -1,5 +1,6 @@
 let count = 0
 let jokesArray = []
+let headingArray = []
 
 window.onload = () => {
   fetchJoke()
@@ -13,13 +14,17 @@ function fetchJoke() {
   )
     .then((res) => res.json())
     .then((data) => {
-      //   console.log(data)
+
       data.jokes.forEach((index) => {
         jokesArray.push(index.joke)
+        headingArray.push(index.category)
       })
-    document.querySelector(//2
+    document.querySelector(
         '.joke',
       ).innerHTML = `<strong>${jokesArray[0]}</strong>`
+      document.getElementsByClassName(
+        'heading',
+      )[0].innerHTML = `<strong>${headingArray[0]}</strong>`
     })
     .catch((err) => {
       console.log(err)
@@ -31,8 +36,10 @@ function nextJoke() {
     document.querySelector(
       '.joke',
     ).innerHTML = `<strong>${jokesArray[count]}</strong>`
+    document.getElementsByClassName(
+      'heading',
+    )[0].innerHTML = `<strong>${headingArray[count]}</strong>`
 
-    console.log(count)
   } else {
     count = 0
     jokesArray = []
@@ -46,7 +53,6 @@ function previousJoke() {
     document.querySelector(
       '.joke',
     ).innerHTML = `<strong>${jokesArray[count]}</strong>`
-    // console.log(count);
   } else {
     document.querySelector(
       '.joke',
